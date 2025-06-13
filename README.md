@@ -1,105 +1,103 @@
 # 🎯 Adaptive LMS Filter – MATLAB + SystemVerilog + HEX Dataflow
 
-This project demonstrates the implementation of an **Adaptive Least Mean Squares (LMS) Filter** in both **MATLAB** and **SystemVerilog**, with signal and weight logging, input generation using `.hex` files, and visual performance analysis. It highlights how LMS can dynamically adjust weights to minimize error between an input and desired signal, simulating real-time learning behavior.
+This repository demonstrates the design and simulation of an **Adaptive Least Mean Squares (LMS) Filter** using both **MATLAB** and **SystemVerilog**. The project integrates `.hex`-formatted signal data, simulates real-time weight learning, and outputs quantized performance metrics including error and convergence behavior.
 
 ---
 
-## 📂 Repository Structure
+## 🗂️ Project Structure
 
 Adaptive-LMS-Filter/
-│
 ├── src/ # Core source files
-│ ├── lms.sv # LMS hardware logic (SystemVerilog)
-│ ├── top.sv # Top-level hardware wrapper
-│ ├── input.sv # Reads input signal from hex
-│ ├── desired.sv # Reads desired signal from hex
-│ ├── lms.m # MATLAB LMS software model
+│ ├── lms.sv # LMS logic (SystemVerilog)
+│ ├── top.sv # Top-level hardware module
+│ ├── input.sv # Hex-based input signal loader
+│ ├── desired.sv # Hex-based desired signal loader
+│ └── lms.m # MATLAB LMS reference model
 │
-├── test/
-│ └── test.sv # LMS testbench for simulation
+├── test/ # Testbench
+│ └── test.sv # LMS SystemVerilog testbench
 │
-├── data/ # Input/Output logs & .hex files
+├── data/ # Input data and logs
 │ ├── input.hex # Quantized input signal
 │ ├── desired.hex # Quantized desired signal
-│ └── log.text # Error and weight log from MATLAB
+│ └── log.text # Error and weight logs (from MATLAB)
 │
-├── plots_and_outputs/ # Results and simulations
+├── plots_and_outputs/ # Visual outputs
 │ ├── LMS modelsim result.png
 │ ├── Waveform - LSM.png
 │ ├── Error - LSM.png
 │ ├── y vs d - LSM.png
-│ ├── weight convergence - LSM.png
+│ └── weight convergence - LSM.png
 │
-└── README.md # This file
+└── README.md # Project documentation
+
+markdown
+Copy
+Edit
 
 ---
 
-## 📌 Key Features
+## 📌 Key Highlights
 
-- **Dual Implementation:** MATLAB script vs hardware (SystemVerilog)
-- **Industrial `.hex` Inputs:** Mimics real-world hardware interfacing
-- **Weight Update Equation:**  
-  $w(n+1) = w(n) + \mu \cdot x(n) \cdot e(n)$  
-  where $e(n) = d(n) - y(n)$
-- **Quantized Simulation Logs:** LMS behavior logged and plotted
-- **ModelSim Output:** RTL-level LMS weight adjustment
+- **Dual Implementation:** MATLAB (floating-point reference) and SystemVerilog (bit-accurate design)
+- **Data Interfacing:** Input and desired signals provided via `.hex` files, aligned with real-world embedded pipelines
+- **Weight Update Rule:**  
+  $w(n+1) = w(n) + \mu \cdot x(n) \cdot (d(n) - y(n))$
+- **Simulation-Ready:** Testbench-ready format for RTL simulation in ModelSim
+- **Quantized Logs:** System response (output, error, weights) logged and plotted
 
 ---
 
-## ⚙️ How to Run
+## 🔧 How to Run
 
-### 🧠 MATLAB
+### MATLAB Simulation
 
-1. Open `src/lms.m`
-2. Ensure `input.hex` and `desired.hex` are in the `/data/` folder
-3. Run the script to simulate adaptive learning
-4. Output:
-   - `log.text` is generated containing error and weights
+1. Place `input.hex` and `desired.hex` in the `data/` directory.
+2. Open and run `src/lms.m`.
+3. Generated logs (e.g., `log.text`) and convergence plots appear in the `plots_and_outputs/` directory.
 
-### 🧪 SystemVerilog (ModelSim)
+### SystemVerilog Simulation (ModelSim)
 
-```sh
+```bash
 vlog src/*.sv test/test.sv
 vsim work.test
-Open waveform viewer to inspect signal tracking
+Run simulation and inspect waveform:
 
-You’ll observe LED-style weight updates and error convergence
+Waveform - LSM.png
 
-📁 About .hex Format
-.hex is the Intel HEX or Verilog Memory Initialization format used to interface hardware with real-world data
+LMS modelsim result.png
 
-It ensures simulation tools (like ModelSim or Quartus) can preload memory blocks in actual FPGA workflows
+📁 About .hex Files
+The .hex format used in this project adheres to industry-standard Verilog Memory Initialization. It allows simulation tools to preload memory or ROMs with realistic test vectors, and is essential in:
 
-Commonly used in:
+FPGA prototyping
 
-Memory-mapped sensor input
+Memory-mapped I/O
 
-Test vector automation
+Filter coefficient loading
 
-FPGA DSP pipelines
+Data-driven digital design flows
 
-✅ This makes the LMS filter design directly portable to FPGA hardware testbenches.
+By using .hex, the project ensures cross-compatibility between MATLAB simulations and Verilog hardware implementation.
 
-📊 Results & Observations
-Plot	Description
-LMS modelsim result.png	Internal output values from ModelSim
-Waveform - LSM.png	Signal activity over time
-Error - LSM.png	Convergence of LMS error
-y vs d - LSM.png	Output vs Desired signal match
-weight convergence - LSM.png	Dynamic weight evolution
+📊 Output Plots
+Plot File	Description
+Waveform - LSM.png	Simulated LMS signal waveform
+Error - LSM.png	LMS output error over time
+y vs d - LSM.png	Output signal vs. desired signal
+weight convergence - LSM.png	Per-weight evolution (adaptive behavior)
+LMS modelsim result.png	ModelSim terminal/output log capture
 
-🧠 Why LMS Matters
-LMS is the foundation of adaptive filters used in:
+🧠 Importance of LMS in Real Applications
+LMS filters are widely applied in:
 
 Echo cancellation
 
-Noise reduction
+Noise suppression
 
-System identification
+Real-time signal prediction
 
-Channel equalization
+Adaptive equalization
 
-It forms the bridge between signal processing and embedded system intelligence
-
-🛠️ This project shows how LMS logic learns directly from live data using industrial formats, paving the way for deployable, intelligent signal-processing hardware.
+This implementation simulates a hardware-learnable filter architecture that adapts based on incoming data patterns, with potential for low-power FPGA deployment.
 
