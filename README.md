@@ -76,11 +76,11 @@ By using .hex, the project ensures cross-compatibility between MATLAB simulation
 
 ## 📊 Output Plots
 Plot File	Description
-Waveform - LSM.png	Simulated LMS signal waveform
-Error - LSM.png	LMS output error over time
-y vs d - LSM.png	Output signal vs. desired signal
-weight convergence - LSM.png	Per-weight evolution (adaptive behavior)
-LMS modelsim result.png	ModelSim terminal/output log capture
+- Waveform - LSM.png	Simulated LMS signal waveform
+- Error - LSM.png	LMS output error over time
+- y vs d - LSM.png	Output signal vs. desired signal
+- weight convergence - LSM.png	Per-weight evolution (adaptive behavior)
+- LMS modelsim result.png	ModelSim terminal/output log capture
 
 ---
 
