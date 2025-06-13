@@ -7,33 +7,31 @@ This repository demonstrates the design and simulation of an **Adaptive Least Me
 ## 🗂️ Project Structure
 
 Adaptive-LMS-Filter/
-├── src/ # Core source files
-│ ├── lms.sv # LMS logic (SystemVerilog)
-│ ├── top.sv # Top-level hardware module
-│ ├── input.sv # Hex-based input signal loader
-│ ├── desired.sv # Hex-based desired signal loader
-│ └── lms.m # MATLAB LMS reference model
+├── src/                        # Core source files
+│   ├── lms.sv                  # LMS hardware logic (SystemVerilog)
+│   ├── top.sv                  # Top-level hardware wrapper
+│   ├── input.sv                # Reads input signal from .hex
+│   ├── desired.sv              # Reads desired signal from .hex
+│   └── lms.m                   # MATLAB software model of LMS
 │
-├── test/ # Testbench
-│ └── test.sv # LMS SystemVerilog testbench
+├── test/                       # Testbenches
+│   └── test.sv                 # LMS testbench (SystemVerilog)
 │
-├── data/ # Input data and logs
-│ ├── input.hex # Quantized input signal
-│ ├── desired.hex # Quantized desired signal
-│ └── log.text # Error and weight logs (from MATLAB)
+├── data/                       # Input/Output data and logs
+│   ├── input.hex               # Quantized input signal
+│   ├── desired.hex             # Quantized desired signal
+│   └── log.text                # LMS error + weights over time
 │
-├── plots_and_outputs/ # Visual outputs
-│ ├── LMS modelsim result.png
-│ ├── Waveform - LSM.png
-│ ├── Error - LSM.png
-│ ├── y vs d - LSM.png
-│ └── weight convergence - LSM.png
+├── plots_and_outputs/          # Simulation results
+│   ├── LMS modelsim result.png       # Final hardware output view
+│   ├── Waveform - LSM.png           # Signal waveform from testbench
+│   ├── Error - LSM.png              # Error trend during adaptation
+│   ├── weight convergence - LSM.png # Filter coefficient evolution
+│   ├── y vs d - LSM.png             # Output vs Desired comparison
+│   └── outputs                      # Text/graphical logs
 │
-└── README.md # Project documentation
+└── README.md                 # This file
 
-markdown
-Copy
-Edit
 
 ---
 
