@@ -1,6 +1,6 @@
 # 🎯 Adaptive LMS Filter – MATLAB + SystemVerilog + HEX Dataflow
 
-This repository demonstrates the design and simulation of an **Adaptive Least Mean Squares (LMS) Filter** using both **MATLAB** and **SystemVerilog**. The project integrates `.hex`-formatted signal data, simulates real-time weight learning, and outputs quantized performance metrics including error and convergence behavior.
+This is a self-initiated personal project to explore real-time signal processing on FPGA platforms using SystemVerilog and MATLAB. This repository demonstrates the design and simulation of an **Adaptive Least Mean Squares (LMS) Filter** using both **MATLAB** and **SystemVerilog**. The project integrates `.hex`-formatted signal data, simulates real-time weight learning, and outputs quantized performance metrics including error and convergence behavior.
 
 ---
 
