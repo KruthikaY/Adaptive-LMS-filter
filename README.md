@@ -54,7 +54,7 @@ vlog src/*.sv test/test.sv
 vsim work.test
 Run simulation and inspect waveform:
 
-Waveform - LSM.png
+Waveform - LMS.png
 
 LMS modelsim result.png
 
@@ -76,10 +76,10 @@ By using .hex, the project ensures cross-compatibility between MATLAB simulation
 
 ## 📊 Output Plots
 Plot File	Description
-- Waveform - LSM.png	Simulated LMS signal waveform
-- Error - LSM.png	LMS output error over time
-- y vs d - LSM.png	Output signal vs. desired signal
-- weight convergence - LSM.png	Per-weight evolution (adaptive behavior)
+- Waveform - LMS.png	Simulated LMS signal waveform
+- Error - LMS.png	LMS output error over time
+- y vs d - LMS.png	Output signal vs. desired signal
+- weight convergence - LMS.png	Per-weight evolution (adaptive behavior)
 - LMS modelsim result.png	ModelSim terminal/output log capture
 
 ---
